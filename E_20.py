@@ -27,7 +27,7 @@ class Solution:
                 flag = 0
                 break         
         if flag:
-            return"true"
+            return "true"
         else:
             return "false"
             
