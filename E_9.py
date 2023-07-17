@@ -40,3 +40,14 @@ def palindrome(num):
     return left_st == right
 
 print(palindrome(num))
+
+'''ALTERNATIVE''''
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        x = str(x)
+        reverse = x[::-1]
+
+        if x == reverse:
+            return "true"
+        else:
+            print("false")
