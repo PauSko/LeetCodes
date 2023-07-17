@@ -19,22 +19,20 @@
 #C can be placed before D (500) and M (1000) to make 400 and 900.
 #Given a roman numeral, convert it to an integer.
 
-def RomanToInt(s):
-    # Dictionary of roman numerals
-    roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
-    # Length of the given string
-    n = len(s)
-    print("Len:", n)
-    # This variable will store result
-    num = roman[s[n - 1]]
-    print(num)
-    # Loop for each character from right to left
-    for i in range(n - 2, -1, -1):
-        # Check if the character at right of current character is bigger or smaller
-        if roman[s[i]] >= roman[s[i + 1]]:
-            num += roman[s[i]]
-        else:
-            num -= roman[s[i]]
-    return num
-
-print(RomanToInt("III"))
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        single_nums = {"I":1,"V":5,"X":10,"L":50,"C":100,"D":500,"M":1000}
+        double_nums = {"IV":4,"IX":9,"XL":40,"XC":90,"CD":400,"CM":900}
+        num = 0
+        import re
+        #handle double cases:
+        x = re.findall("|".join(double_nums.keys()),s)
+        if len(x)>0:
+            for item in x:
+                num += double_nums[item]
+        #remove double cases from string and match the rest:
+        xx = re.sub("|".join(x),"",s)
+        for letter in xx:
+            if letter in single_nums.keys():
+                num+=single_nums[letter]
+        return num
