@@ -9,26 +9,27 @@
 #Input: s = "(]"
 #Output: false
 
-#s = "(]"
-s = "()"
-#s = "()[]{}"
-
-open = ["[","{","("]
-close = ["]","}",")"]
-
-for i in range(len(s)):
-    if i%2 == 0:
-        flag = 0
-        if s[i] in open:
-            idx = open.index(s[i])
-        if close[idx] == s[i+1]:
-            flag = 1
+class Solution:
+    def isValid(self, s: str) -> bool:          
+        import re       
+        while len(s) != 0:
+            easy_pairs = re.findall("\(\)|\[\]|\{\}",s)
+            if(len(easy_pairs))>0:
+                if "".join(easy_pairs) == s:
+                    flag = 1
+                    break
+                else:
+                    for item in easy_pairs:
+                        s = s.replace(item,"")
+                        flag = 1
+                        continue
+            else:
+                flag = 0
+                break         
+        if flag:
+            return"true"
         else:
-            flag = 0
-            break
-    else:
-        continue
-if flag == 1:
-    print("True")
-else:
-    print("False")
+            return "false"
+            
+s="{}{{}}"        
+x = Solution().isValid(s)
