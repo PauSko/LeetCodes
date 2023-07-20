@@ -9,11 +9,14 @@
 #list2 = [1,3,4]
 
 list1 = []
-list2 = [0]
-
-def merge(list1,list2):
-    list3 = list1 + list2
-    list3 = sorted(list3)
-    return list3
-
-print(merge(list1,list2))
+        if not list1:
+            return list2
+        if not list2:
+            return list1
+        
+        if list1.val <= list2.val:
+            list1.next = self.mergeTwoLists(list1.next, list2)
+            return list1
+        else:
+            list2.next = self.mergeTwoLists(list1, list2.next)
+            return list2
