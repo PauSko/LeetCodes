@@ -6,18 +6,15 @@
 
 nums = [0,0,1,1,1,2,2,3,3,4]
 
-def rem_doubles(nums):
-    unique=list()
-    for item in nums:
-        if item not in unique:
-            unique.append(item)
-        else:
-            continue
-    if len(unique) < len(nums):
-        diff  = len(nums) - len(unique)
-        for item in range(diff):
-            unique.append('_')
-        #unique.append(("_") * (len(nums) - len(unique)))
-    return unique
-
-print(rem_doubles(nums))
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        while len(nums)!=len(set(nums)):
+            for idx in range(len(nums)):
+                try:
+                    if nums[idx] == nums[idx+1]:
+                        nums.remove(nums[idx])
+                    else:
+                        continue
+                except:
+                    continue
+        return len(nums)
