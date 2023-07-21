@@ -9,27 +9,8 @@
 nums = [3,2,2,3]
 val = 3
 
-def rem_val_from_nums(nums,val):
-    new_lst=[]
-    for item in nums:
-        if item == val:
-            continue
-        else:
-            new_lst.append(item)
-    return new_lst
-
-print(rem_val_from_nums(nums,val))
-
-'''------ALTERNATIVE------'''
-nums = [3,2,2,3]
-val = 3
-
-def rem_val_from_nums(nums,val):
-    for item in nums:
-        item = int(item)
-        if item == val:
-            nums.pop(nums.index(item))
-
-    return nums
-
-print(rem_val_from_nums(nums,val))
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        while val in nums:
+            nums.remove(val)
+        return len(nums)
