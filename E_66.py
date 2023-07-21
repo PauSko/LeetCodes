@@ -25,16 +25,12 @@
 #digits = [4,3,2,1]
 #digits = [9]
 
-def numbers(digits):
-    str_digits = ""
-    for item in digits:
-        str_digits += str(item)
-    num_digits = int(str_digits)
-    incr_num = num_digits + 1
-    str_incr = list(str(incr_num))
-    nums = list()
-    for item in str_incr:
-        nums.append(int(item))
-    return nums
-
-print(numbers(digits))
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        import re
+        digits = [str(num) for num in digits]
+        num = int("".join(digits))
+        num += 1
+        array_digit = list(str(num))
+        array_digit = [int(num) for num in array_digit]
+        return array_digit
