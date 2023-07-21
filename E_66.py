@@ -27,7 +27,6 @@
 
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        import re
         digits = [str(num) for num in digits]
         num = int("".join(digits))
         num += 1
