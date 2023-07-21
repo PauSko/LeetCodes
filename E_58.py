@@ -15,11 +15,13 @@
 #s = "   fly me   to   the moon  "
 s = "Hello World"
 
-def len_last_wrd(s):
-    s = s.rstrip()
-    words = s.split()
-    last = words[-1]
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        import re
+        
+        s = re.sub("\s{2,}"," ",s)
+        s = re.sub("^\s","",s)
+        s = re.sub("\s$","",s)
 
-    return len(last)
-
-print(len_last_wrd(s))
+        lst = s.split()
+        return len(lst[-1])
