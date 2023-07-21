@@ -13,29 +13,19 @@
 nums = [1,3,5,6]
 target = 5
 
-def find_idx(nums, target):
-    idx = nums.index(target)
-    return idx
-
-print(find_idx(nums, target))
-
-'''-------ALTERNATIVE-------'''
-
-nums = [1,3,5,6]
-target = 7
-
-def find_idx(nums, target):
-    if target in nums:
-        idx = nums.index(target)
-        return idx
-    else:
-        for idx in range(len(nums)):
-            if nums[idx] < target:
-                return idx
-            try:
-                if nums[idx] < target and nums[idx+1] > target:
-                    return idx + 1
-            except:
-                return len(nums)
-
-print(find_idx(nums, target))
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        try:
+            num = nums.index(target)
+        except:
+            idx = 1
+            flag = 0
+            while flag == 0:
+                if target-idx in nums:
+                    num = nums.index(target-idx)+1
+                    flag = 1
+                elif target+idx in nums:
+                    num = nums.index(target+idx)
+                    flag = 1
+                idx += 1
+        return num  
