@@ -8,14 +8,11 @@
 haystack = "hello"
 needle = "ll"
 
-def in_str(haystack, needle):
-    import re
-    try:
-        found = re.search(needle,haystack)
-        be = found.span()
-        index = be[0]
-    except:
-        index = -1
-    return index
-
-print(in_str(haystack, needle))
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        import re
+        try:
+            match = re.search(needle,haystack).span()[0]
+        except:
+            match = -1
+        return match
