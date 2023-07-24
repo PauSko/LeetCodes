@@ -11,29 +11,16 @@
 #Output: 2
 #Explanation: The square root of 8 is 2.82842..., and since the decimal part is truncated, 2 is returned.
 
-num=17
-k=int(num/2)
-mnoznik = 0
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x >= 0:
+            num = 1
+            while True:
+                if num*num <= x:
+                    num+=1
+                else:
+                    return num-1
+        else:
+            return ""
 
-smaller_nums = list()
-exactly_nums = list()
-
-for item in range(k+1):
-    #print(item)
-    if item * item < num:
-        smaller_nums.append((item,"smaller"))
-        continue
-    if item * item == num:
-        exactly_nums.append((item,"exactly"))
-        continue
-    else:
-        break
-#print(smaller_nums)
-#print(smaller_nums[len(smaller_nums)-1][0])
-
-if len(exactly_nums) == 1:
-    mnoznik = exactly_nums[0][0]
-else:
-    mnoznik = smaller_nums[len(smaller_nums)-1][0]
-
-print(mnoznik)
+Solution().mySqrt(4)
