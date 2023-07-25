@@ -9,16 +9,16 @@
 #Input: head = [1,1,2,3,3]
 #Output: [1,2,3]
 
-head = [1,1,2,3,3]
-
-no_dupl = list()
-for item in head:
-    if len(no_dupl) == 0:
-        no_dupl.append(item)
-    else:
-        if item not in no_dupl:
-            no_dupl.append(item)
-        else:
-            continue
-
-print(no_dupl)
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return head
+        
+        current = head
+        while current.next:
+            if current.val == current.next.val:
+                current.next = current.next.next  
+            else:
+                current = current.next 
+                
+        return head
