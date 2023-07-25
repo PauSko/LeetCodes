@@ -29,28 +29,11 @@
 #nums2 = [2,5,6]
 #n = 3
 
-nums1 = [0]
-m = 0
-nums2 = [1]
-n = 1
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        for item in nums2:
+            nums1[m]=item
+            m+=1
+        nums1 = nums1.sort()
 
-for idx2 in range(len(nums2)):
-    for idx1 in range(len(nums1)):
-        if nums1[idx1] == 0:
-            nums1.insert(idx1,nums2[idx2])
-            break
-nums1 = nums1[:m+n]
-nums1.sort()
-print(nums1)
-
-#nums3 = nums1 + nums2
-# nums3.sort()
-#
-# for item in nums3:
-#     print(item)
-#     if item == 0:
-#         print("This was zero")
-#         nums3.pop(0)
-#         continue
-#         #nums3.pop(item)
-# print(nums3)
+        return nums1
